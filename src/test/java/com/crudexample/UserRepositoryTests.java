@@ -18,7 +18,7 @@ public class UserRepositoryTests {
     private UserRepository repository;
 
     @Test
-    public UserEntity testAddNew(){
+    public UserEntity test_addNew(){
 //        UserEntity user = new UserEntity();
 //        user.setEmail("thusuong.150398@gmail.com");
 //        user.setFirstName("thu");
