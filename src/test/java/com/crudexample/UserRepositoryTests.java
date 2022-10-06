@@ -1,7 +1,8 @@
 package com.crudexample;
 
-import com.crudexample.user.User;
+import com.crudexample.user.UserEntity;
 import com.crudexample.user.UserRepository;
+import lombok.Builder;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +18,24 @@ public class UserRepositoryTests {
     private UserRepository repository;
 
     @Test
-    public void testAddNew(){
-        User user = new User();
-        user.setEmail("thusuong.150398@gmail.com");
-        user.setFirstName("thu");
-        user.setLastName("suong");
-        user.setPassword("suong123456");
-        User saveUser = repository.save(user);
+    public UserEntity testAddNew(){
+
+//        user.setEmail("thusuong.150398@gmail.com");
+//        user.setFirstName("thu");
+//        user.setLastName("suong");
+//        user.setPassword("suong123456");
+
+        UserEntity saveUser = repository.save(new UserEntity());
 
         Assertions.assertThat(saveUser).isNotNull();
         Assertions.assertThat(saveUser.getId()).isGreaterThan(0);
+
+        return UserEntity.builder()
+                .email("thusuong.150398@gmail.com")
+                .firstName("thu")
+                .lastName("suong")
+                .password("suong123456")
+                .build();
     }
 
 //    @Test

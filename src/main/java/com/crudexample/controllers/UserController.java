@@ -1,15 +1,13 @@
 package com.crudexample.controllers;
 
-import com.crudexample.user.User;
+import com.crudexample.user.UserEntity;
 import com.crudexample.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -26,7 +24,7 @@ public class UserController {
     @GetMapping(value = "/users")
     public ModelAndView listAll(){
         ModelAndView modelAndView = new ModelAndView("users");
-        List<User> listUsers = userService.listAll();
+        List<UserEntity> listUsers = userService.listAll();
         modelAndView.addObject("listUsers", listUsers);
         return modelAndView;
     }
@@ -34,13 +32,15 @@ public class UserController {
     @GetMapping(value = "/users/new")
     public ModelAndView showNewForm(){
         ModelAndView modelAndView = new ModelAndView("user_form");
-        modelAndView.addObject("user", new User());
+        modelAndView.addObject("user", new UserEntity());
         return modelAndView;
     }
 
+
     @PostMapping(value = "/users/save")
-    public String saveUser(User user){
+    public String saveUser(UserEntity user, RedirectAttributes ra){
         userService.save(user);
+        ra.addFlashAttribute("message","the user has been saved successfully");
         return "redirect:/users";
     }
 
