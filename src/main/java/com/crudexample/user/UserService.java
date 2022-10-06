@@ -10,11 +10,11 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public List<User> listAll(){
-        return (List<User>) repository.findAll();
+    public List<UserEntity> listAll(){
+        return (List<UserEntity>) repository.findAll();
     }
 
-    public void save(User user) {
+    public void save(UserEntity user) {
         repository.save(user);
     }
 }
