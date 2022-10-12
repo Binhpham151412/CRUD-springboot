@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>[[@{pageTitle}]]</title>
     <link rel="stylesheet" href="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
 </head>
 <body>
 <div class="container-fluid ">
     <div class="text-center">
-        <h2>Add New Users</h2>
+        <h2>[[@{pageTitle}]]</h2>
     </div>
 </div>
 <form  th:action="@{/users/save}" method="post" th:object="${user}"
