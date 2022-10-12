@@ -14,8 +14,8 @@
         <a th:href="@{/users/new}" class="h3">Add New Users</a>
     </div>
 
-    <div th:if="${messages}" class="alert alert-success text-center">
-
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
     </div>
 
     <div>
@@ -26,18 +26,19 @@
                     <th>E-mail</th>
                     <th>First Name</th>
                     <th>Last Name</th>
+                    <th>Enable</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
-            <!--/*@thymesVar id="listUsers" type=""*/-->
             <th:block th:each="item : ${listUsers}">
                 <tr>
                     <td>[[${item.id}]]</td>
                     <td>[[${item.email}]]</td>
                     <td>[[${item.firstName}]]</td>
                     <td>[[${item.lastName}]]</td>
+                    <td>[[${item.enable}]]</td>
                     <td>
                         <a class="h4 mr-3" th:href="@{'/users/edit/' + ${item.id}}">Edit</a>
                     </td>
